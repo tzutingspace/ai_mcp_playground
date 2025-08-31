@@ -47,6 +47,8 @@ sequenceDiagram
     Cline->>User: 紐約明天的天氣是這樣的...
 ```
 
+- 可以直接在 terminal 跑 uv run weather.py 來啟動 MCP Server，示範一下輸入輸出...
+- 就可簡單理解建立 MCP Server 的 library 在幫你做哪些事情
 
 
 # Reference： 

@@ -1,5 +1,6 @@
 # Description
-MCP 全名為「Model Context Protocol」，MCP 最早由 Anthropic 於 2024 年底提出，後續 OpenAI、Google 也加入支援 MCP 協定。因此，現今談到讓 AI 應用程式對接工具時，MCP 是業界首要提及的標準協定。
+MCP 全名為「Model Context Protocol」，MCP 最早由 Anthropic 於 2024 年底提出，後續 OpenAI、Google 也加入支援 MCP 協定。因此，現今談到讓 AI 應用程式對接工具時，MCP 是業界首要提及的標準協定。  
+MCP 的設計目的在於讓 Cursor 或其他 AI 應用程式能以標準化方式對接到不同工具
 
 ## MCP 組成
 ![MCP Architecture](./images/MCP_architecture.png)

@@ -7,6 +7,14 @@
       "command": "uv",
       "args": ["run", "/Users/tzuting/Developer/x_ai/mcp/weather/weather.py"],
       "autoApprove": []
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
     }
   }
 }

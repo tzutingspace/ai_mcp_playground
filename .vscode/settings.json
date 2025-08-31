@@ -13,7 +13,8 @@
     "python.terminal.activateEnvironment": true,
     "python.defaultInterpreterPath": "${workspaceFolder}/weather/.venv/bin/python",
     "cSpell.words": [
-        "fastmcp"
+        "fastmcp",
+        "Streamable"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,

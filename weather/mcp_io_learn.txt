@@ -1,0 +1,25 @@
+## 溝通為 json {} 形式
+## 輸入: Cline -> MCP Server
+## 輸出: MCP Server -> Cline
+
+## 初始化
+輸入: {"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"Cline","version":"3.26.7"}},"jsonrpc":"2.0","id":0}
+輸出: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-03-26","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"weather","version":"1.9.4"}}}
+輸入: {"method":"notifications/initialized","jsonrpc":"2.0"}
+
+## 詢問工具清單
+輸入: {"method":"tools/list","jsonrpc":"2.0","id":1}
+輸出: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"get_alerts","description":"Get weather alerts for a US state.\n\nArgs:\n    state: Two-letter US state code (e.g. CA, NY)\n","inputSchema":{"properties":{"state":{"title":"State","type":"string"}},"required":["state"],"title":"get_alertsArguments","type":"object"}},{"name":"get_forecast","description":"Get weather forecast for a location","inputSchema":{"properties":{"latitude":{"description":"Latitude of the location","title":"Latitude","type":"number"},"longitude":{"description":"Longitude of the location","title":"Longitude","type":"number"}},"required":["latitude","longitude"],"title":"get_forecastArguments","type":"object"}}]}}
+
+### 這邊是在問有沒有對應的 resources 和 resources_templates (好像是其他的應用, 文件還是報告之類的)
+輸入: {"method":"resources/list","jsonrpc":"2.0","id":2}
+輸出: {"jsonrpc":"2.0","id":2,"result":{"resources":[]}}
+輸入: {"method":"resources/templates/list","jsonrpc":"2.0","id":3}
+輸出: {"jsonrpc":"2.0","id":3,"result":{"resourceTemplates":[]}}
+
+### 結束問好階段
+### 等待被呼叫
+
+### 有用戶問 `紐約明天天氣如何？`
+輸入: {"method":"tools/call","params":{"name":"get_forecast","arguments":{"latitude":40.7128,"longitude":-74.006}},"jsonrpc":"2.0","id":4}
+輸出: {"jsonrpc":"2.0","id":4,"result":{"content":[{"type":"text","text":"\nThis Afternoon:\nTemperature: 76°F\nWind: 8 mph E\nForecast: Sunny, with a high near 76. East wind around 8 mph.\n\n---\n\nTonight:\nTemperature: 64°F\nWind: 3 to 8 mph E\nForecast: Mostly cloudy. Low around 64, with temperatures rising to around 66 overnight. East wind 3 to 8 mph.\n\n---\n\nLabor Day:\nTemperature: 74°F\nWind: 7 to 13 mph NE\nForecast: Mostly sunny, with a high near 74. Northeast wind 7 to 13 mph.\n\n---\n\nMonday Night:\nTemperature: 64°F\nWind: 6 to 10 mph NE\nForecast: Mostly clear, with a low around 64. Northeast wind 6 to 10 mph.\n\n---\n\nTuesday:\nTemperature: 75°F\nWind: 9 mph E\nForecast: Sunny. High near 75, with temperatures falling to around 73 in the afternoon. East wind around 9 mph.\n"}],"isError":false}}

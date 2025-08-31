@@ -1,0 +1,39 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "tools": [
+      {
+        "name": "get_alerts",
+        "description": "Get weather alerts for a US state.\n\nArgs:\n    state: Two-letter US state code (e.g. CA, NY)\n",
+        "inputSchema": {
+          "properties": { "state": { "title": "State", "type": "string" } },
+          "required": ["state"],
+          "title": "get_alertsArguments",
+          "type": "object"
+        }
+      },
+      {
+        "name": "get_forecast",
+        "description": "Get weather forecast for a location",
+        "inputSchema": {
+          "properties": {
+            "latitude": {
+              "description": "Latitude of the location",
+              "title": "Latitude",
+              "type": "number"
+            },
+            "longitude": {
+              "description": "Longitude of the location",
+              "title": "Longitude",
+              "type": "number"
+            }
+          },
+          "required": ["latitude", "longitude"],
+          "title": "get_forecastArguments",
+          "type": "object"
+        }
+      }
+    ]
+  }
+}

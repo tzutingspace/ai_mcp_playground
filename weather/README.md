@@ -2,6 +2,19 @@
 - weather.py：一個範例 MCP Server，可用於天氣預報和天氣警報，程式碼主要來自 MCP 官方範例。
 - mcp_logger.py：用於擷取記錄 MCP Server 的輸入輸出，並將記錄內容寫入 mcp_io.log，該程式碼主要由 Gemini 2.5 Pro 編寫。
 
+
+## 用 mcp_logger.py 擷取 MCP Server 的輸入輸出
+概念上就是跑   
+```bash
+python mcp_logger.py uv run /path/weather.py 
+```
+![示意圖](../images/mcp_logger_作用示意圖.png)
+
+mcp_io.log (留一個紀錄於 mcp_io_learn.txt) 
+- 溝通為 json {} 形式
+- 輸入: Cline -> MCP Server
+- 輸出: MCP Server -> Cline
+
 ## MCP Server - Cline - LLM 互動
 ```mermaid
 sequenceDiagram
@@ -10,9 +23,15 @@ sequenceDiagram
     participant Cline as Cline
     participant Model as 模型
 
+    Note over User, Model: 初始化
+
     Cline->>MCP: 啟動 MCP Server
-    Cline->>MCP: 你好呀，我是 Cline
-    MCP->>Cline: 你好，我是 weather
+    Cline->>MCP: 你好，我是 Cline，版本與協定為...
+    MCP->>Cline: 你好，我是 weather，版本與協定為...
+    Cline->>MCP: 收到
+    
+    Note over User, Model: 確認工具
+
     Cline->>MCP: 你有哪些工具？
     MCP->>Cline: 我有 get_forecast 和 get_alerts
 
@@ -27,6 +46,7 @@ sequenceDiagram
     Model->>Cline: 紐約明天的天氣是這樣的...
     Cline->>User: 紐約明天的天氣是這樣的...
 ```
+
 
 
 # Reference： 

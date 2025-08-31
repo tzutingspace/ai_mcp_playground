@@ -55,12 +55,10 @@ def forward_and_log_stdin(proxy_stdin, target_stdin, log_file):
             try:
                 line_str = line_bytes.decode("utf-8")
             except UnicodeDecodeError:
-                line_str = (
-                    f"[Non-UTF8 data, {len(line_bytes)} bytes]\n"  # Log representation
-                )
+                line_str = f"[Non-UTF8 data, {len(line_bytes)} bytes]\n"  # Log representation
 
             # Log with prefix
-            log_file.write(f"输入: {line_str}")
+            log_file.write(f"輸入: {line_str}")
             log_file.flush()  # Ensure log is written promptly
 
             # Write the original bytes to the target process's stdin
@@ -106,7 +104,7 @@ def forward_and_log_stdout(target_stdout, proxy_stdout, log_file):
                 line_str = f"[Non-UTF8 data, {len(line_bytes)} bytes]\n"
 
             # Log with prefix
-            log_file.write(f"输出: {line_str}")
+            log_file.write(f"輸出: {line_str}")
             log_file.flush()
 
             # Write the original bytes to the script's actual stdout

@@ -1,7 +1,8 @@
-from typing import Any
+from typing import Annotated, Any
 
 import httpx
 from mcp.server.fastmcp import FastMCP
+from pydantic import Field
 
 # Initialize FastMCP server
 mcp = FastMCP("weather", log_level="ERROR")
@@ -36,13 +37,10 @@ Instructions: {props.get("instruction", "No specific instructions provided")}
 """
 
 
-@mcp.tool()
-async def get_alerts(state: str) -> str:
-    """Get weather alerts for a US state.
-
-    Args:
-        state: Two-letter US state code (e.g. CA, NY)
-    """
+@mcp.tool(name="get_alerts", description="Get weather alerts for a US state")
+async def get_alerts(
+    state: Annotated[str, Field(description="Two-letter US state code (e.g. CA, NY)")],
+) -> str:
     url = f"{NWS_API_BASE}/alerts/active/area/{state}"
     data = await make_nws_request(url)
 
@@ -56,14 +54,11 @@ async def get_alerts(state: str) -> str:
     return "\n---\n".join(alerts)
 
 
-@mcp.tool()
-async def get_forecast(latitude: float, longitude: float) -> str:
-    """Get weather forecast for a location.
-
-    Args:
-        latitude: Latitude of the location
-        longitude: Longitude of the location
-    """
+@mcp.tool(name="get_forecast", description="Get weather forecast for a location")
+async def get_forecast(
+    latitude: Annotated[float, Field(description="Latitude of the location")],
+    longitude: Annotated[float, Field(description="Longitude of the location")],
+) -> str:
     # First get the forecast grid endpoint
     points_url = f"{NWS_API_BASE}/points/{latitude},{longitude}"
     points_data = await make_nws_request(points_url)

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "weather": {
+      "disabled": false,
+      "timeout": 60,
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "/Users/tzuting/Developer/x_ai/mcp/weather/weather.py"],
+      "autoApprove": []
+    }
+  }
+}

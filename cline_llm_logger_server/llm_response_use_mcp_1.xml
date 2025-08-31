@@ -1,0 +1,24 @@
+<thinking>
+The user is asking about the weather in New York tomorrow. I can see from the environment details that there's a weather MCP server available (`weather_`). This server has tools for getting weather forecasts and alerts.
+
+I should use the `get_forecast` tool from the weather MCP server to get the weather forecast for New York. However, I need the latitude and longitude coordinates for New York City.
+
+Let me first check what tools are available in the weather MCP server and then use the fetch tool to get the coordinates for New York City if needed.
+</thinking>
+
+I'll help you get the weather forecast for New York tomorrow. Let me use the available weather MCP server to get this information.
+
+<use_mcp_tool>
+<server_name>weather_</server_name>
+<tool_name>get_forecast</tool_name>
+<arguments>
+{
+      \"latitude\": 40.7128,
+  \"longitude\": -74.0060
+}
+</arguments>
+<task_progress>
+- [ ] Get weather forecast for New York
+- [ ] Present the weather information
+</task_progress>
+</use_mcp_tool>

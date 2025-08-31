@@ -1,0 +1,40 @@
+[project]
+name = "cline-llm-logger-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.116.1",
+    "httpx>=0.28.1",
+    "uvicorn>=0.35.0",
+]
+
+
+[tool.ruff]
+exclude = ["*.venv*"]
+line-length = 160
+
+[tool.ruff.lint.isort] # https://docs.astral.sh/ruff/settings/#lintisort
+combine-as-imports = false # 預設不合併 `as` 別名的 import
+force-single-line = false  # 預設不強制每個 import 獨立成一行 (不管長度)
+
+[tool.ruff.lint] # https://docs.astral.sh/ruff/settings/#lint
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    "W191", # indentation contains tabs
+    "B904", # raise ... from err, raise ... from None
+    "B006", # Do not use mutable data structures for argument defaults
+    "E722", # do not use bare except
+]

@@ -11,7 +11,8 @@
         "editor.defaultFormatter": "charliermarsh.ruff"
     },
     "python.terminal.activateEnvironment": true,
-    "python.defaultInterpreterPath": "${workspaceFolder}/weather/.venv/bin/python",
+    // "python.defaultInterpreterPath": "${workspaceFolder}/weather/.venv/bin/python",
+    "python.defaultInterpreterPath": "${workspaceFolder}/cline_llm_logger_server/.venv/bin/python",
     "cSpell.words": [
         "fastmcp",
         "Streamable"

@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI Debugger",
+            "type": "debugpy",
+            "python": "${workspaceFolder}/cline_llm_logger_server/.venv/bin/python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "llm_logger:app",
+                "--port",
+                "8000",
+                "--reload",
+                "--workers=4"
+            ],
+            "cwd": "${workspaceFolder}/cline_llm_logger_server/",
+            "envFile": "${workspaceFolder}/cline_llm_logger_server/.env",
+            "jinja": true
+        }
+    ]
+}

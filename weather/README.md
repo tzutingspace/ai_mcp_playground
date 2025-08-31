@@ -50,6 +50,10 @@ sequenceDiagram
 - 可以直接在 terminal 跑 uv run weather.py 來啟動 MCP Server，示範一下輸入輸出...
 - 就可簡單理解建立 MCP Server 的 library 在幫你做哪些事情
 
+## MCP 並沒有規定如何與模型進行互動
+- MCP 只是定義了 MCP Host (e.g. Cline) 如何與 MCP Server (e.g. weather) 進行互動
+![示意圖](../images/MCP_sequenceDiagram.png)
+
 
 # Reference： 
 - Youtube:

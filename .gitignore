@@ -199,3 +199,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+!llm_log_1_hello.log
+!llm_log_2_use_mcp.log
